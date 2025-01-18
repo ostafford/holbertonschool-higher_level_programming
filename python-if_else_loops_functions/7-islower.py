@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-if ord(islower()) is range(97, 123):
-    print(True)
-elif ord() is range(65, 91):
-    print(False)
-else:
-    print(False)
+def islower(c):
+    if ord(c) >= 97 and ord(c) <= 122:
+        return True
+    else:
+        return False
