@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 def raise_exception():
-    pass
+    """Raises a type exception"""
+    raise TypeError
