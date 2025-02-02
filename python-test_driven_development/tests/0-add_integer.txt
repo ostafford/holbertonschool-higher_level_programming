@@ -1,0 +1,40 @@
+# Test cases for add_integer function
+=================================
+
+Import function from module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Test basic addition with integers:
+    >>> add_integer(1, 2)
+    3
+    >>> add_integer(100, -2)
+    98
+    >>> add_integer(2)
+    100
+    >>> add_integer(100.3, -2)
+    98
+
+Test error cases:
+    >>> try:
+    ...     add_integer(4, "School")
+    ... except Exception as e:
+    ...     print(e)
+    b must be an integer
+
+    >>> try:
+    ...     add_integer(None)
+    ... except Exception as e:
+    ...     print(e)
+    a must be an integer
+
+Test floating point numbers:
+    >>> add_integer(2.5, 3.7)
+    5
+
+Test negative numbers:
+    >>> add_integer(-2, -3)
+    -5
+
+Test large numbers:
+    >>> add_integer(999999998, 999999999)
+    1999999997
