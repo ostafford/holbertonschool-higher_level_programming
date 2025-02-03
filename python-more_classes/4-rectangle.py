@@ -16,7 +16,7 @@ class Rectangle:
     
     The class provides a repr() method for instance recreation.
     """
-    def __init__(self, width=0, height=0):
+    def __init__(self, width, height):
         """
         Initialize a Rectangle instance.
         
@@ -27,7 +27,17 @@ class Rectangle:
         self.width = width
         self.height = height
         
-    # [Previous methods]
+    def __str__(self):
+        """
+        Create a string representation of the rectangle.
+        
+        Returns:
+            str: A string of the rectangle using '#' characters.
+            Returns an empty string if width or height is 0.
+        """
+        if self.width == 0 or self.height == 0:
+            return ""
+        return "\n".join(["#" * self.width for _ in range(self.height)])
     
     def __repr__(self):
         """

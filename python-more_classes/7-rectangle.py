@@ -35,7 +35,18 @@ class Rectangle:
         self.height = height
         Rectangle.number_of_instances += 1
         
-    # [Previous methods]
+    def __str__(self):
+        """
+        Create a string representation of the rectangle.
+        
+        Returns:
+            str: A string of the rectangle using '#' characters.
+            Returns an empty string if width or height is 0.
+        """
+        Rectangle = []
+        for _ in range(self.height):
+            Rectangle.append('#' * self.width)
+        return '\n'.join(Rectangle)
     
     def __del__(self):
         """
@@ -43,5 +54,4 @@ class Rectangle:
         
         Decrements the number of instances and prints a goodbye message.
         """
-        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")

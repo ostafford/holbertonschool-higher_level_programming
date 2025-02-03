@@ -23,7 +23,7 @@ class Rectangle:
     number_of_instances = 0
     print_symbol = "#"
     
-    def __init__(self, width=0, height=0):
+    def __init__(self, width, height):
         """
         Initialize a Rectangle instance.
         
@@ -35,12 +35,24 @@ class Rectangle:
         """
         self.width = width
         self.height = height
-        Rectangle.number_of_instances += 1
+  
+    def area(self):
+        return self.width * self.height
         
-    # [Previous methods]
+    def __str__(self):
+        """
+        Create a string representation of the rectangle.
+        
+        Returns:
+            str: A string of the rectangle using '#' characters.
+            Returns an empty string if width or height is 0.
+        """
+        if self.width == 0 or self.height == 0:
+            return ""
+        return "\n".join(["#" * self.width for _ in range(self.height)])
     
-    @staticmethod
-    def bigger_or_equal(rect_1, rect_2):
+    @classmethod
+    def bigger_or_equal(cls, rect_1, rect_2):
         """
         Compare two rectangles and return the one with the larger area.
         
@@ -54,13 +66,10 @@ class Rectangle:
         Raises:
             TypeError: If either argument is not a Rectangle instance.
         """
-        if not isinstance(rect_1, Rectangle):
+        if not isinstance(rect_1, cls):
             raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(rect_2, Rectangle):
+        if not isinstance(rect_2, cls):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        if rect_1.area() >= rect_2.area():
-            return rect_1
-        return rect_2
     
     def __del__(self):
         """
@@ -68,5 +77,4 @@ class Rectangle:
         
         Decrements the number of instances and prints a goodbye message.
         """
-        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
