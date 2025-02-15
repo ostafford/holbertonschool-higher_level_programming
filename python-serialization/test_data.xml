@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data><item key="name" value="John Doe" type="str" /><item key="age" value="30" type="int" /><item key="height" value="1.75" type="float" /><item key="is_student" value="True" type="bool" /><item key="address" value="None" type="NoneType" /></data>
