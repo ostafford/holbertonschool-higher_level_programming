@@ -24,7 +24,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
 
         # Step 4: Send the actual message (must be converted to bytes with encode())
         # Structure: self.wfile.write("insert_string_message_here".encode())
-                self.wfile.write("Hello, this is a simple GET API call!".encode())
+                self.wfile.write("Hello, this is a simple API!".encode())
         # `self.wfile` is the phone line (output stream)
         # `.write()` is speaking into the phone (sending data)
         # `"message"` is what you want to say (the content)
@@ -60,7 +60,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
                 self.send_response(404)
                 self.send_header('content-type', 'text/plain')
                 self.end_headers()
-                self.wfile.write("404 Not Found: Endpoint not found".encode())
+                self.wfile.write("Endpoint not found".encode())
 
         except Exception as DRY_error:
         # Central Place to handle ALL errors
