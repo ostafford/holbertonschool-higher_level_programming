@@ -6,10 +6,7 @@ app = Flask(__name__)
 
 # Store users in memory (like a simple database)
 # Python Dictionary
-user_database = {
-    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
-    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
-    }
+user_database = {}
 
 # Decorator '@' is like a receptionist delegating the incoming call
 @app.route('/')
@@ -23,7 +20,8 @@ def home():
 def get_data():
     try:
         # get list of usernames from 'user_database'
-        return jsonify(list(user_database.keys()))
+        usernames = list(user_database.keys())
+        return jsonify(usernames)
         # jsonify -> converter (Python to JSON)
         # list() -> convert user_database to python 'list' format
         # dict_name.keys() -> extracting keys only and storing them in list format
@@ -48,8 +46,7 @@ def user_username(username):
         # jsonify -> converter (Python to JSON)
         # user_database[] -> show converted data with parsing [argument]
         else:
-            return jsonify({"error": "user not found"}), 404
-        
+            return jsonify({"error": "User not found"}), 404
     except Exception as dry_error:
         return jsonify({"error": str(dry_error)}), 500
 
