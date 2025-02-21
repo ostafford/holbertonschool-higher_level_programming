@@ -43,10 +43,24 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
                 }
         # Need to convert Python to JSON (serialized) (jason.dumps())
                 self.wfile.write(json.dumps(data).encode())
-            # Multiple steps happening in one line:
-            # 1. json.dumps(data) -> Convert Python dict to JSON string
-            # 2. .encode() -> Convert JSON string to bytes for HTTP
-            # 3. self.wfile.write() -> Send bytes to client
+        # Multiple steps happening in one line:
+        # 1. json.dumps(data) -> Convert Python dict to JSON string
+        # 2. .encode() -> Convert JSON string to bytes for HTTP
+        # 3. self.wfile.write() -> Send bytes to client
+
+        # Handle Status endpoint
+            elif self.path == '/status':
+                self.send_response(200)
+                self.send_header('content-type', 'text/plain')
+                self.end_headers()
+                self.wfile.write("OK".encode())
+
+        # Handle undefined endpoints and error requests
+            else:
+                self.send_response(404)
+                self.send_header('content-type', 'text/plain')
+                self.end_headers()
+                self.wfile.write("404 Not Found: Endpoint not found".encode())
 
         except Exception as DRY_error:
         # Central Place to handle ALL errors
