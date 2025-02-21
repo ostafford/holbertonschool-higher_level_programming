@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 # Create Flask app instance
 # starting the "server" instance
@@ -6,7 +6,10 @@ app = Flask(__name__)
 
 # Store users in memory (like a simple database)
 # Python Dictionary
-user_database = {}
+user_database = {
+    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
+    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
+    }
 
 # Decorator '@' is like a receptionist delegating the incoming call
 @app.route('/')
@@ -50,9 +53,33 @@ def user_username(username):
     except Exception as dry_error:
         return jsonify({"error": str(dry_error)}), 500
 
-@app.route('/add_user')
-pass
+@app.route('/add_user', methods=['POST'])
+# methods=[] -> indicates what methods this endpoint accepts
+def add_user():
+    try:
+        # Converts incoming JSON data to Python dictionary
+        user_data = request.get_json()
+
+        # Check if username field exists with data in it
+        # Did the user fill out the field.
+        if 'username' not in user_data:
+            return jsonify({"error": "Username is required"}), 400
+
+        # Get username data from username field
+        username = user_data['username']
+        # Storing all (POST) form data to 'user_database'
+        # 'username' will be the data that changes
+        # everything else will stay the same (if any)
+        user_database[username] = user_data
+
+        # Return success response to client (browser)
+        return jsonify({
+            "message": "User added",
+            "user": user_data
+        }), 201
+
+    except Exception as dry_error:
+        return jsonify({"error": str(dry_error)}), 500
 
 if __name__ == "__main__":
     app.run()
-
