@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Learn Serialization",
+    "description": "Practice Python serialization with JSON",
+    "due_date": "2024-02-20",
+    "completed": true,
+    "created_at": "2025-02-15 20:45:13"
+  },
+  {
+    "title": "Build Project",
+    "description": "Create a small project using new skills",
+    "due_date": null,
+    "completed": false,
+    "created_at": "2025-02-15 20:45:13"
+  }
+]
