@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="welcome">
+        <h2>Welcome to Server-Side Rendering Demo</h2>
+        <p>Hello, <strong>{{ user.name }}</strong>! You are a <strong>{{ user.role }}</strong>.</p>
+        
+        <div class="explanation">
+            <h3>What's happening here?</h3>
+            <p>This page is rendered on the server. The server:</p>
+            <ol>
+                <li>Receives your request</li>
+                <li>Processes the data (user information)</li>
+                <li>Inserts it into the HTML template</li>
+                <li>Sends the complete HTML to your browser</li>
+            </ol>
+            <p>Your browser just displays the already-processed HTML - no JavaScript needed to show this content!</p>
+        </div>
+    </section>
+{% endblock %}

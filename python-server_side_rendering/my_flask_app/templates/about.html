@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="about">
+        <h2>About Server-Side Rendering</h2>
+        
+        <div class="comparison">
+            <div class="ssr">
+                <h3>Server-Side Rendering (SSR)</h3>
+                <ul>
+                    <li><strong>Processing:</strong> Server generates complete HTML</li>
+                    <li><strong>SEO:</strong> Excellent - content is fully crawlable</li>
+                    <li><strong>Initial Load:</strong> Fast content display</li>
+                    <li><strong>JavaScript:</strong> Optional (enhanced experience)</li>
+                    <li><strong>Server Load:</strong> Higher (handles rendering)</li>
+                </ul>
+            </div>
+            
+            <div class="csr">
+                <h3>Client-Side Rendering (CSR)</h3>
+                <ul>
+                    <li><strong>Processing:</strong> Browser builds page with JavaScript</li>
+                    <li><strong>SEO:</strong> Challenging without extra techniques</li>
+                    <li><strong>Initial Load:</strong> Visible delay while JS executes</li>
+                    <li><strong>JavaScript:</strong> Required for core functionality</li>
+                    <li><strong>Server Load:</strong> Lower (sends minimal data)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
